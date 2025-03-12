@@ -1,4 +1,3 @@
-
 import { Map, Zap, BarChart3, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -23,7 +22,13 @@ const MapView = () => {
           </div>
         </div>
       </div>
-      <div className="h-[340px] bg-[url('/lovable-uploads/0fb4fc64-c04a-492a-b1ed-e5e09bfdb10a.jpeg')] bg-cover bg-center relative group">
+      <div className="h-[340px] bg-[url('/lovable-uploads/281d937a-6075-4bea-8027-f6e6da08b5de.png')] bg-cover bg-center relative group">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-40"></div>
+        
+        <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-fin-yellow rounded-full animate-pulse shadow-[0_0_15px_rgba(245,158,11,0.5)]"></div>
+        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-fin-green rounded-full animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
+        <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-fin-blue rounded-full animate-pulse shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex items-end p-6 transition-all duration-500 group-hover:from-transparent group-hover:to-black/70">
           <div className="grid grid-cols-3 gap-4 w-full">
             <div className="glass rounded-lg p-3 text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
