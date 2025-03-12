@@ -60,11 +60,11 @@ const Contact = () => {
     <section id="contact" className="py-16 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4 animate-slide-down">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <Mail className="h-6 w-6 text-primary" />
-            <h2 className="text-3xl font-bold tracking-tight gradient-text">CONTACT US</h2>
+            <h2 className="text-3xl font-bold tracking-tight">CONTACT US</h2>
           </div>
-          <h3 className="text-xl font-semibold animate-slide-down [animation-delay:100ms] gradient-text">ANY QUESTIONS</h3>
+          <h3 className="text-xl font-semibold">ANY QUESTIONS</h3>
         </div>
         
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-sm p-8 border border-border">
