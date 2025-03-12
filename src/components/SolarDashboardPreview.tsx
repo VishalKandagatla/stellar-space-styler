@@ -1,5 +1,5 @@
 
-import { BarChart, Calendar, Map, PieChart, SunMedium, TrendingUp } from "lucide-react";
+import { ArrowRight, BarChart, Calendar, Map, PieChart, SunMedium, TrendingUp } from "lucide-react";
 
 const SolarDashboardPreview = () => {
   return (
