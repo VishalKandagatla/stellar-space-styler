@@ -1,16 +1,20 @@
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, SunMedium } from "lucide-react";
 
 const Hero = () => {
   return (
     <div 
-      className="relative pt-32 pb-20 md:pt-40 md:pb-32"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden"
       id="hero"
     >
-      {/* Background */}
-      <div className="absolute inset-0 -z-10 grid-pattern opacity-50"></div>
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-fin-blue/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-fin-yellow/10 rounded-full blur-3xl -z-10"></div>
+      {/* Solar-themed Background */}
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-30"></div>
+      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-fin-blue/10 via-transparent to-fin-yellow/20 -z-10"></div>
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-fin-yellow/10 blur-3xl -z-10 animate-float"></div>
+      <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-fin-blue/10 blur-3xl -z-10 animate-float" style={{ animationDelay: "2s" }}></div>
+      
+      {/* Sun rays effect */}
+      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(254,240,138,0.2),transparent_60%)] -z-10"></div>
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
