@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search, Map, BarChart3, Compass, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,11 +20,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { title: "WHAT WE DO", href: "#what-we-do" },
-    { title: "PRODUCT", href: "#product" },
-    { title: "MISSION", href: "#mission" },
-    { title: "VALUES", href: "#values" },
-    { title: "CONTACT US", href: "#contact" },
+    { title: "SEARCH", href: "#search", icon: Search },
+    { title: "PROPERTY DETAILS", href: "#property-details", icon: Map },
+    { title: "WATCHLIST", href: "#watchlist", icon: Compass },
+    { title: "DASHBOARD", href: "#dashboard", icon: BarChart3 },
   ];
 
   return (
@@ -31,7 +31,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/80 backdrop-blur-lg shadow-sm py-3"
+          ? "bg-white/90 backdrop-blur-lg shadow-sm py-3"
           : "bg-transparent py-5"
       )}
     >
@@ -45,17 +45,27 @@ const Navbar = () => {
             />
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <a 
                 key={link.title}
                 href={link.href} 
-                className="text-sm font-medium tracking-wider link-underline"
+                className="text-sm font-medium tracking-wider link-underline flex items-center gap-2"
               >
+                <link.icon className="h-4 w-4" />
                 {link.title}
               </a>
             ))}
           </nav>
+
+          <div className="hidden md:flex items-center gap-4">
+            <Button variant="outline" size="sm">
+              LOGIN
+            </Button>
+            <Button size="sm">
+              SIGN UP
+            </Button>
+          </div>
 
           <button
             className="md:hidden text-foreground"
@@ -78,12 +88,21 @@ const Navbar = () => {
               <a
                 key={link.title}
                 href={link.href}
-                className="block py-2 text-foreground tracking-wider"
+                className="flex items-center gap-3 py-2 text-foreground tracking-wider"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
+                <link.icon className="h-5 w-5 text-primary" />
                 {link.title}
               </a>
             ))}
+            <div className="pt-4 border-t border-border grid grid-cols-2 gap-2">
+              <Button variant="outline" className="w-full" size="sm">
+                LOGIN
+              </Button>
+              <Button className="w-full" size="sm">
+                SIGN UP
+              </Button>
+            </div>
           </div>
         </div>
       )}
