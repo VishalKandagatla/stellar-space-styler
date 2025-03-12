@@ -1,3 +1,4 @@
+
 import { Map, Zap, BarChart3, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -22,14 +23,33 @@ const MapView = () => {
           </div>
         </div>
       </div>
-      <div className="h-[340px] bg-[url('/lovable-uploads/281d937a-6075-4bea-8027-f6e6da08b5de.png')] bg-cover bg-center relative group">
+      <div className="h-[340px] relative group overflow-hidden">
+        {/* Base satellite image */}
+        <img 
+          src="/lovable-uploads/281d937a-6075-4bea-8027-f6e6da08b5de.png" 
+          alt="Satellite view of solar panel fields" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        
+        {/* Grid overlay for technical effect */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-40"></div>
         
-        <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-fin-yellow rounded-full animate-pulse shadow-[0_0_15px_rgba(245,158,11,0.5)]"></div>
-        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-fin-green rounded-full animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
-        <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-fin-blue rounded-full animate-pulse shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+        {/* Data points with glow effects */}
+        <div className="absolute top-1/4 left-1/3 group/marker">
+          <div className="w-3 h-3 bg-fin-yellow rounded-full animate-pulse shadow-[0_0_15px_rgba(245,158,11,0.5)] z-10"></div>
+          <div className="absolute -inset-4 bg-fin-yellow/20 rounded-full animate-ping opacity-75 duration-1000"></div>
+        </div>
+        <div className="absolute top-1/2 right-1/4 group/marker">
+          <div className="w-3 h-3 bg-fin-green rounded-full animate-pulse shadow-[0_0_15px_rgba(16,185,129,0.5)] z-10"></div>
+          <div className="absolute -inset-4 bg-fin-green/20 rounded-full animate-ping opacity-75 duration-700"></div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/2 group/marker">
+          <div className="w-3 h-3 bg-fin-blue rounded-full animate-pulse shadow-[0_0_15px_rgba(14,165,233,0.5)] z-10"></div>
+          <div className="absolute -inset-4 bg-fin-blue/20 rounded-full animate-ping opacity-75 duration-900"></div>
+        </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex items-end p-6 transition-all duration-500 group-hover:from-transparent group-hover:to-black/70">
+        {/* Information overlay at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 flex items-end p-6 transition-all duration-500">
           <div className="grid grid-cols-3 gap-4 w-full">
             <div className="glass rounded-lg p-3 text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
               <div className="flex items-center justify-center mb-2">
