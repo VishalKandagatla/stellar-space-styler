@@ -3,6 +3,51 @@ import { Map, Zap, BarChart3, Timer, ChartLine, ChartBar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
+const EnergyProjectionGraph = () => {
+  return (
+    <div className="w-full h-full bg-gray-900/90 flex flex-col p-6">
+      <div className="flex justify-between items-center mb-4">
+        <h4 className="text-white/90 font-semibold text-sm">Annual Energy Projection</h4>
+        <span className="text-fin-green text-xs font-medium">+12.4% YoY</span>
+      </div>
+      
+      {/* Main graph area */}
+      <div className="flex-1 flex items-end gap-2 pb-6">
+        {[40, 65, 80, 95, 75, 85, 92, 88, 78, 90, 85, 95].map((value, index) => (
+          <div key={index} className="flex-1 flex flex-col items-center gap-1">
+            <div 
+              className="w-full bg-gradient-to-t from-fin-blue to-fin-blue/20 rounded-t-sm relative overflow-hidden group"
+              style={{ height: `${value}%` }}
+            >
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-[linear-gradient(to_top,rgba(14,165,233,0.3),transparent)]"></div>
+            </div>
+            <span className="text-[8px] text-white/50">
+              {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][index]}
+            </span>
+          </div>
+        ))}
+      </div>
+      
+      {/* Bottom stats */}
+      <div className="flex justify-between items-center pt-2 border-t border-white/10">
+        <div className="text-center">
+          <p className="text-[10px] text-white/50 mb-1">Total Output</p>
+          <p className="text-white font-semibold text-sm">24.7 MWh</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[10px] text-white/50 mb-1">Peak Month</p>
+          <p className="text-white font-semibold text-sm">April</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[10px] text-white/50 mb-1">Efficiency</p>
+          <p className="text-white font-semibold text-sm">87.3%</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MapView = () => {
   const [showProjections, setShowProjections] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -37,16 +82,11 @@ const MapView = () => {
         </div>
       </div>
       <div className="h-[340px] relative group overflow-hidden">
-        {/* Fallback background if image fails to load */}
-        <div className={`absolute inset-0 bg-gray-200 flex items-center justify-center ${imageLoaded ? 'hidden' : ''}`}>
-          <span className="text-gray-500">Loading map...</span>
-        </div>
-        
         {/* Base satellite image */}
         <img 
           src="/lovable-uploads/d8db171a-ce83-484b-b3b2-f279f0ea3e6a.png" 
           alt="Solar Panels" 
-          className={`absolute inset-0 w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
           onLoad={() => setImageLoaded(true)}
           onError={(e) => {
             console.error("Failed to load image:", e);
@@ -171,31 +211,9 @@ const MapView = () => {
           )}
         </div>
 
-        {/* Information overlay at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 flex items-end p-6 transition-all duration-500">
-          <div className="grid grid-cols-3 gap-4 w-full">
-            <div className="glass rounded-lg p-3 text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div className="flex items-center justify-center mb-2">
-                <Zap className="h-4 w-4 text-fin-yellow" />
-              </div>
-              <h4 className="text-xs text-white/80 mb-1">Solar Potential</h4>
-              <p className="text-white font-semibold text-sm md:text-base">1,450 kWh/m²</p>
-            </div>
-            <div className="glass rounded-lg p-3 text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div className="flex items-center justify-center mb-2">
-                <BarChart3 className="h-4 w-4 text-fin-green" />
-              </div>
-              <h4 className="text-xs text-white/80 mb-1">Avg. ROI</h4>
-              <p className="text-white font-semibold text-sm md:text-base">15.7%</p>
-            </div>
-            <div className="glass rounded-lg p-3 text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <div className="flex items-center justify-center mb-2">
-                <Timer className="h-4 w-4 text-fin-blue" />
-              </div>
-              <h4 className="text-xs text-white/80 mb-1">Payback Period</h4>
-              <p className="text-white font-semibold text-sm md:text-base">6.3 Years</p>
-            </div>
-          </div>
+        {/* Replace gradient background with Energy Projection Graph */}
+        <div className="absolute inset-0 flex items-end z-10">
+          <EnergyProjectionGraph />
         </div>
       </div>
     </div>
