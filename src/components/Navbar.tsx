@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { X, Menu, Search } from "lucide-react";
+import { Search, Menu, X, Sun } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,27 +29,28 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center gap-2">
+            <Sun className="h-6 w-6 text-primary" />
             <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-fin-blue">
-              Finsat<span className="font-light">.space</span>
+              Solar<span className="font-light">Sat</span>
             </span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-sm font-medium link-underline">
-              Dashboard
+              Property Search
             </Link>
             <Link to="/" className="text-sm font-medium link-underline">
-              Markets
+              Solar Analysis
             </Link>
             <Link to="/" className="text-sm font-medium link-underline">
               Portfolio
             </Link>
             <Link to="/" className="text-sm font-medium link-underline">
-              News
+              Resources
             </Link>
             <Link to="/" className="text-sm font-medium link-underline">
-              Education
+              Pricing
             </Link>
           </nav>
 
@@ -58,12 +59,12 @@ const Navbar = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <input
                 type="search"
-                placeholder="Search..."
-                className="h-9 w-[180px] rounded-full bg-secondary pl-9 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary/50"
+                placeholder="Search properties..."
+                className="h-9 w-[220px] rounded-full bg-secondary pl-9 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary/50"
               />
             </div>
             <button className="h-9 px-4 rounded-full bg-primary text-white text-sm font-medium shadow-sm hover:bg-primary/90 transition-colors">
-              Sign In
+              Get Started
             </button>
           </div>
 
@@ -89,14 +90,14 @@ const Navbar = () => {
               className="block py-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Dashboard
+              Property Search
             </Link>
             <Link
               to="/"
               className="block py-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Markets
+              Solar Analysis
             </Link>
             <Link
               to="/"
@@ -110,26 +111,26 @@ const Navbar = () => {
               className="block py-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              News
+              Resources
             </Link>
             <Link
               to="/"
               className="block py-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Education
+              Pricing
             </Link>
             <div className="pt-2 flex flex-col space-y-3">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <input
                   type="search"
-                  placeholder="Search..."
+                  placeholder="Search properties..."
                   className="h-10 w-full rounded-lg bg-secondary pl-9 pr-4 text-sm"
                 />
               </div>
               <button className="h-10 rounded-lg bg-primary text-white text-sm font-medium shadow-sm">
-                Sign In
+                Get Started
               </button>
             </div>
           </div>
