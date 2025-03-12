@@ -1,4 +1,3 @@
-
 import { Building2, Sparkles, Target, TrendingUp } from "lucide-react";
 
 const FeatureCard = ({ icon: Icon, title, description }: { 
@@ -65,8 +64,8 @@ const WhatWeDo = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-fin-blue/20 rounded-3xl transform rotate-3"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1617788138017-80ad40cc9b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" 
-                  alt="Solar Panels"
+                  src="/lovable-uploads/bb445684-3b8b-41cb-93c8-e6f9881c0cfd.png" 
+                  alt="Solar Panels at Sunset"
                   className="w-full h-[600px] object-cover"
                 />
               </div>
