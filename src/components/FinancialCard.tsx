@@ -4,12 +4,13 @@ import { ReactNode } from "react";
 
 interface FinancialCardProps {
   title: string;
-  value?: string | number;
+  value?: string | number | ReactNode;
   icon?: ReactNode;
   trend?: number;
   description?: string;
   className?: string;
   children?: ReactNode;
+  style?: React.CSSProperties;
 }
 
 const FinancialCard = ({
@@ -20,9 +21,10 @@ const FinancialCard = ({
   description,
   className,
   children,
+  style,
 }: FinancialCardProps) => {
   return (
-    <div className={cn("premium-card overflow-hidden", className)}>
+    <div className={cn("premium-card overflow-hidden", className)} style={style}>
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>

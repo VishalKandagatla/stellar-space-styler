@@ -1,7 +1,7 @@
 
-import { LineChart, DonutChart, Share, BarChart3, Briefcase } from "lucide-react";
+import { Share, BarChart3, Briefcase, PieChart } from "lucide-react";
 import { cn } from "@/lib/utils";
-import LineChart from "./LineChart";
+import LineChartComponent from "./LineChart";
 import FinancialCard from "./FinancialCard";
 
 // Sample portfolio data
@@ -54,7 +54,7 @@ const Portfolio = () => {
           <div className="lg:col-span-4 space-y-6">
             <FinancialCard title="Portfolio Performance" className="h-[320px]">
               <div className="mt-2 h-[230px]">
-                <LineChart 
+                <LineChartComponent 
                   data={portfolioPerformance} 
                   height={230} 
                   strokeColor="#0EA5E9"
@@ -207,7 +207,7 @@ const Portfolio = () => {
                 
                 <div className="flex justify-between">
                   <div className="flex items-center">
-                    <LineChart className="h-4 w-4 text-muted-foreground mr-2" />
+                    <PieChart className="h-4 w-4 text-muted-foreground mr-2" />
                     <span className="text-sm">Annualized</span>
                   </div>
                   <div className="text-sm font-medium text-fin-green">+12.5%</div>

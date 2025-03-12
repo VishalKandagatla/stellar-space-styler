@@ -1,8 +1,8 @@
 
-import { Activity, TrendingUp, DollarSign, Briefcase, LineChart } from "lucide-react";
+import { Activity, TrendingUp, DollarSign, Briefcase, LineChart as LineChartIcon } from "lucide-react";
 import FinancialCard from "./FinancialCard";
 import AnimatedNumber from "./AnimatedNumber";
-import LineChart from "./LineChart";
+import LineChartComponent from "./LineChart";
 
 // Sample data
 const portfolioData = [
@@ -63,7 +63,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <FinancialCard
             title="Portfolio Value"
-            value={<AnimatedNumber value={258943.28} formatOptions={{ style: 'currency', currency: 'USD' }} className="tracking-tight" />}
+            value="$258,943.28"
             icon={<Briefcase className="h-5 w-5" />}
             trend={12.8}
             description="vs. last month"
@@ -73,8 +73,8 @@ const Dashboard = () => {
           
           <FinancialCard
             title="Market Index"
-            value={<AnimatedNumber value={4892.57} formatOptions={{ maximumFractionDigits: 2 }} className="tracking-tight" />}
-            icon={<LineChart className="h-5 w-5" />}
+            value="4,892.57"
+            icon={<LineChartIcon className="h-5 w-5" />}
             trend={3.2}
             description="vs. last month"
             className="animate-fade-in"
@@ -83,7 +83,7 @@ const Dashboard = () => {
           
           <FinancialCard
             title="Daily Return"
-            value={<AnimatedNumber value={1245.89} formatOptions={{ style: 'currency', currency: 'USD' }} className="tracking-tight" />}
+            value="$1,245.89"
             icon={<TrendingUp className="h-5 w-5" />}
             trend={-2.4}
             description="vs. yesterday"
@@ -93,7 +93,7 @@ const Dashboard = () => {
           
           <FinancialCard
             title="Total Assets"
-            value={<AnimatedNumber value={15} formatOptions={{ maximumFractionDigits: 0 }} className="tracking-tight" />}
+            value="15"
             icon={<DollarSign className="h-5 w-5" />}
             description="Diversified portfolio"
             className="animate-fade-in"
@@ -116,7 +116,7 @@ const Dashboard = () => {
               </div>
               
               <div className="mt-2 h-[280px]">
-                <LineChart data={portfolioData} height={280} strokeColor="#0EA5E9" />
+                <LineChartComponent data={portfolioData} height={280} strokeColor="#0EA5E9" />
               </div>
             </FinancialCard>
           </div>
@@ -124,7 +124,7 @@ const Dashboard = () => {
           <div>
             <FinancialCard title="Market Index" className="h-[400px]">
               <div className="mt-2 h-[280px]">
-                <LineChart 
+                <LineChartComponent 
                   data={marketData} 
                   height={280} 
                   strokeColor="#8B5CF6" 
