@@ -1,3 +1,4 @@
+
 import { ArrowRight, SunMedium } from "lucide-react";
 
 const Hero = () => {
@@ -6,18 +7,18 @@ const Hero = () => {
       className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden"
       id="hero"
     >
-      {/* Main background image - solar panels in field */}
+      {/* Main background image - solar panels with sunset */}
       <div 
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d')] 
-        bg-cover bg-center opacity-30 -z-10"
+        className="absolute inset-0 bg-[url('/lovable-uploads/7845e71e-3ebf-44f8-af97-dcd3073af25c.png')] 
+        bg-cover bg-center opacity-80 -z-10"
       ></div>
       
       {/* Overlay gradient for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-transparent -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-transparent -z-10"></div>
 
       {/* Subtle sun effects */}
       <div className="absolute top-0 right-0 w-full h-full 
-        bg-[radial-gradient(circle_at_top_right,rgba(254,240,138,0.3),transparent_70%)] -z-10">
+        bg-[radial-gradient(circle_at_top_right,rgba(254,240,138,0.2),transparent_70%)] -z-10">
       </div>
       
       {/* Floating sun icon */}
@@ -26,7 +27,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center bg-white/60 backdrop-blur-sm p-8 rounded-xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-slide-up">
             UNLOCK ALL THE VALUE BEHIND CLIMATE CHANGE IMPACT
           </h1>
@@ -43,13 +44,13 @@ const Hero = () => {
           </div>
           
           <div className="grid grid-cols-3 gap-6 mb-12 animate-slide-up" style={{ animationDelay: "400ms" }}>
-            <div className="flex flex-col items-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-border">
+            <div className="flex flex-col items-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-border">
               <h3 className="text-sm font-medium">THE PROBLEM</h3>
             </div>
-            <div className="flex flex-col items-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-border">
+            <div className="flex flex-col items-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-border">
               <h3 className="text-sm font-medium">HOW WE SOLVE IT</h3>
             </div>
-            <div className="flex flex-col items-center p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-border">
+            <div className="flex flex-col items-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-border">
               <h3 className="text-sm font-medium">OUR PLAN</h3>
             </div>
           </div>
