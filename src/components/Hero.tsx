@@ -21,14 +21,14 @@ const Hero = () => {
           <div className="inline-block p-2 px-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm mb-6 animate-fade-in">
             <span className="text-sm font-medium text-fin-blue flex items-center">
               <Sparkles className="h-4 w-4 mr-2 text-fin-yellow" />
-              Revolutionizing Solar Investment Through Advanced AI
+              Revolutionizing Solar Investment Through Advanced AI Technology
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm mb-8">
             Unlock The Future Of
             <br />
-            <span className="relative">
+            <span className="relative inline-block">
               Solar Investment
               <svg className="absolute -bottom-4 left-0 w-full" viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 0 15 Q 100 0 200 15 Q 300 30 400 15" stroke="url(#grad1)" strokeWidth="4" fill="none" strokeLinecap="round" />
