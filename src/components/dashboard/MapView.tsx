@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const MapView = () => {
   const [showProjections, setShowProjections] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   return (
     <div className="col-span-2 rounded-xl overflow-hidden shadow-xl bg-white/90 backdrop-blur border border-border h-[400px] transition-all duration-300 hover:shadow-2xl">
@@ -36,11 +37,21 @@ const MapView = () => {
         </div>
       </div>
       <div className="h-[340px] relative group overflow-hidden">
+        {/* Fallback background if image fails to load */}
+        <div className={`absolute inset-0 bg-gray-200 flex items-center justify-center ${imageLoaded ? 'hidden' : ''}`}>
+          <span className="text-gray-500">Loading map...</span>
+        </div>
+        
         {/* Base satellite image */}
         <img 
           src="/lovable-uploads/d8db171a-ce83-484b-b3b2-f279f0ea3e6a.png" 
           alt="Solar Panels" 
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+          onError={(e) => {
+            console.error("Failed to load image:", e);
+            setImageLoaded(false);
+          }}
         />
         
         {/* Grid overlay for technical effect */}
