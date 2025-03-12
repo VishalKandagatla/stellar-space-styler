@@ -24,11 +24,11 @@ const MapContainer: React.FC<MapContainerProps> = ({ showProjections }) => {
         }}
       />
       
-      {/* Overlay effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent opacity-70"></div>
+      {/* Overlay effect - lighter for the light theme */}
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-100/80 via-gray-100/30 to-transparent opacity-60"></div>
       
       {/* Grid overlay for technical effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
       
       {/* Data points with glow effects */}
       <MapProjectionMarker 
