@@ -1,7 +1,24 @@
 
 import React from "react";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const EnergyProjectionGraph = () => {
+  // Monthly energy data with projected values
+  const data = [
+    { name: 'Jan', value: 40, projection: 42 },
+    { name: 'Feb', value: 65, projection: 68 },
+    { name: 'Mar', value: 80, projection: 83 },
+    { name: 'Apr', value: 95, projection: 98 },
+    { name: 'May', value: 75, projection: 78 },
+    { name: 'Jun', value: 85, projection: 88 },
+    { name: 'Jul', value: 92, projection: 95 },
+    { name: 'Aug', value: 88, projection: 91 },
+    { name: 'Sep', value: 78, projection: 81 },
+    { name: 'Oct', value: 90, projection: 93 },
+    { name: 'Nov', value: 85, projection: 88 },
+    { name: 'Dec', value: 95, projection: 98 },
+  ];
+
   return (
     <div className="w-full h-full bg-gray-900/90 flex flex-col p-6">
       <div className="flex justify-between items-center mb-4">
@@ -9,22 +26,61 @@ const EnergyProjectionGraph = () => {
         <span className="text-fin-green text-xs font-medium">+12.4% YoY</span>
       </div>
       
-      {/* Main graph area */}
-      <div className="flex-1 flex items-end gap-2 pb-6">
-        {[40, 65, 80, 95, 75, 85, 92, 88, 78, 90, 85, 95].map((value, index) => (
-          <div key={index} className="flex-1 flex flex-col items-center gap-1">
-            <div 
-              className="w-full bg-gradient-to-t from-fin-blue to-fin-blue/20 rounded-t-sm relative overflow-hidden group"
-              style={{ height: `${value}%` }}
-            >
-              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-[linear-gradient(to_top,rgba(14,165,233,0.3),transparent)]"></div>
-            </div>
-            <span className="text-[8px] text-white/50">
-              {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][index]}
-            </span>
-          </div>
-        ))}
+      {/* Recharts area chart */}
+      <div className="flex-1 pb-6">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            data={data}
+            margin={{ top: 5, right: 5, left: -20, bottom: 5 }}
+          >
+            <defs>
+              <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.6} />
+                <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0} />
+              </linearGradient>
+              <linearGradient id="colorProjection" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#36d399" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#36d399" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+            <XAxis 
+              dataKey="name" 
+              tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 10 }}
+              axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+            />
+            <YAxis 
+              tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 10 }} 
+              axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+              tickFormatter={(value) => `${value}%`}
+            />
+            <Tooltip
+              contentStyle={{ 
+                backgroundColor: 'rgba(30,41,59,0.9)', 
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: '4px',
+                color: 'white' 
+              }}
+              labelStyle={{ color: 'rgba(255,255,255,0.7)' }}
+              formatter={(value) => [`${value}%`, '']}
+            />
+            <Area 
+              type="monotone" 
+              dataKey="value" 
+              stroke="#0ea5e9" 
+              fillOpacity={1}
+              fill="url(#colorValue)" 
+            />
+            <Area 
+              type="monotone" 
+              dataKey="projection" 
+              stroke="#36d399" 
+              strokeDasharray="3 3"
+              fillOpacity={1}
+              fill="url(#colorProjection)" 
+            />
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
       
       {/* Bottom stats */}
