@@ -1,6 +1,7 @@
 
 import { ArrowRight, Search, Building2, MapPin, Gauge, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Hero = () => {
   return (
@@ -52,7 +53,45 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Property cards section removed */}
+        {/* Property search bar */}
+        <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-xl shadow-lg p-4 md:p-6 animate-fade-in [animation-delay:600ms]">
+          <div className="flex flex-col md:flex-row items-stretch gap-4">
+            <div className="flex-1 relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Building2 className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <Input 
+                type="text" 
+                placeholder="Property type or address" 
+                className="pl-10 h-12 bg-white border-gray-200" 
+              />
+            </div>
+            <div className="flex-1 relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <MapPin className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <Input 
+                type="text" 
+                placeholder="Location" 
+                className="pl-10 h-12 bg-white border-gray-200" 
+              />
+            </div>
+            <div className="flex-1 relative">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <Gauge className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <Input 
+                type="text" 
+                placeholder="Solar potential" 
+                className="pl-10 h-12 bg-white border-gray-200" 
+              />
+            </div>
+            <Button className="h-12 px-6 bg-gradient-to-r from-fin-blue to-fin-purple text-white shadow-md">
+              <Search className="h-5 w-5 mr-2" />
+              Search
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
