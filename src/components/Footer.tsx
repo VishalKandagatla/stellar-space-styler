@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, MapPin, Mail, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,9 +9,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <span className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-fin-blue">
-                FinSat<span className="font-light">.space</span>
-              </span>
+              <img 
+                src="/lovable-uploads/6bb1cd8e-bfbb-4f2b-b101-f719b66a738a.png" 
+                alt="FinSat Logo" 
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground text-lg mb-6 max-w-md">
               The profitable way to develop land and properties sustainably, making smart Real Estate decisions and mitigating risk.
