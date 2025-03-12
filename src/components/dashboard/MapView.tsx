@@ -1,5 +1,6 @@
 
-import { Map, Button } from "lucide-react";
+import { Map } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const MapView = () => {
   return (
