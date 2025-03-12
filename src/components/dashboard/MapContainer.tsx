@@ -43,7 +43,7 @@ const MapContainer: React.FC<MapContainerProps> = ({ showProjections }) => {
       />
       
       <MapProjectionMarker 
-        position={{ top: "2/3", left: "1/2" }} 
+        position={{ bottom: "1/3", left: "1/2" }} 
         color="fin-blue" 
         showProjections={showProjections}
         type="energy"
