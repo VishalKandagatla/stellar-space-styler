@@ -13,14 +13,22 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-fin-yellow/10 blur-3xl -z-10 animate-float"></div>
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-fin-blue/10 blur-3xl -z-10 animate-float" style={{ animationDelay: "2s" }}></div>
       
-      {/* Sun rays effect */}
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(254,240,138,0.2),transparent_60%)] -z-10"></div>
+      {/* Sun rays effect - increased opacity */}
+      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(254,240,138,0.3),transparent_60%)] -z-10"></div>
       
-      {/* Solar panels background */}
-      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-[url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843')] bg-cover bg-bottom opacity-5 -z-10"></div>
+      {/* Solar panels background - increased opacity */}
+      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-[url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843')] bg-cover bg-bottom opacity-10 -z-10"></div>
       
-      {/* Moving sun beam effect */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[200%] h-full bg-gradient-to-b from-fin-yellow/5 to-transparent rotate-12 animate-pulse -z-10"></div>
+      {/* Moving sun beam effect - increased width and opacity */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[200%] h-full bg-gradient-to-b from-fin-yellow/10 to-transparent rotate-12 animate-pulse -z-10"></div>
+      
+      {/* Added solar panel pattern */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276')] bg-repeat-space opacity-5 -z-10"></div>
+      
+      {/* Added floating sun icon */}
+      <div className="absolute top-20 right-20 text-fin-yellow opacity-20 animate-float">
+        <SunMedium size={80} />
+      </div>
       
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
