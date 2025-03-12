@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center mb-12">
           <div className="flex items-center justify-center mb-6">
             <Sparkles className="h-10 w-10 text-fin-yellow animate-pulse mr-3" />
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm">
               Unlock The Future Of Solar Investment
             </h1>
             <Sparkles className="h-10 w-10 text-fin-yellow animate-pulse ml-3" />
@@ -34,7 +34,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20 animate-fade-in [animation-delay:600ms] hover:shadow-2xl transition-all duration-300">
           <div className="flex items-center gap-3 mb-6">
             <Search className="h-5 w-5 text-primary" />
-            <h2 className="text-xl font-semibold">Find Your Ideal Solar Properties</h2>
+            <h2 className="text-xl font-semibold gradient-text">Find Your Ideal Solar Properties</h2>
           </div>
           
           <div className="relative mb-6 group">
@@ -49,22 +49,22 @@ const Hero = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 rounded-xl bg-white/50 backdrop-blur border border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
               <Building2 className="h-6 w-6 text-fin-green mb-2 group-hover:scale-110 transition-transform" />
-              <h3 className="font-medium">Commercial</h3>
+              <h3 className="font-medium gradient-text">Commercial</h3>
               <p className="text-sm text-muted-foreground">85 Properties</p>
             </div>
             <div className="p-4 rounded-xl bg-white/50 backdrop-blur border border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
               <Gauge className="h-6 w-6 text-fin-blue mb-2 group-hover:scale-110 transition-transform" />
-              <h3 className="font-medium">Industrial</h3>
+              <h3 className="font-medium gradient-text">Industrial</h3>
               <p className="text-sm text-muted-foreground">42 Properties</p>
             </div>
             <div className="p-4 rounded-xl bg-white/50 backdrop-blur border border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
               <BarChart3 className="h-6 w-6 text-fin-purple mb-2 group-hover:scale-110 transition-transform" />
-              <h3 className="font-medium">Mixed-Use</h3>
+              <h3 className="font-medium gradient-text">Mixed-Use</h3>
               <p className="text-sm text-muted-foreground">29 Properties</p>
             </div>
             <div className="p-4 rounded-xl bg-white/50 backdrop-blur border border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
               <Search className="h-6 w-6 text-fin-yellow mb-2 group-hover:scale-110 transition-transform" />
-              <h3 className="font-medium">Residential</h3>
+              <h3 className="font-medium gradient-text">Residential</h3>
               <p className="text-sm text-muted-foreground">156 Properties</p>
             </div>
           </div>
