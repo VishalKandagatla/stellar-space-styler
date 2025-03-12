@@ -6,14 +6,14 @@ const Hero = () => {
   return (
     <div className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
       {/* Abstract background with gradient overlay - increased opacity */}
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/0fb4fc64-c04a-492a-b1ed-e5e09bfdb10a.jpeg')] bg-cover bg-center opacity-40"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-fin-blue/20"></div>
+      <div className="absolute inset-0 bg-[url('/lovable-uploads/0fb4fc64-c04a-492a-b1ed-e5e09bfdb10a.jpeg')] bg-cover bg-center opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/80 to-fin-blue/40"></div>
       
       {/* Geometric patterns - increased opacity */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 border-8 border-fin-blue/20 rounded-full opacity-80 rotate-12"></div>
-        <div className="absolute top-60 -left-20 w-40 h-40 border-4 border-fin-purple/20 rounded-full opacity-80"></div>
-        <div className="absolute bottom-20 right-40 w-60 h-60 border-6 border-fin-green/20 rounded-full opacity-80 -rotate-12"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 border-8 border-fin-blue/40 rounded-full opacity-90 rotate-12"></div>
+        <div className="absolute top-60 -left-20 w-40 h-40 border-4 border-fin-purple/40 rounded-full opacity-90"></div>
+        <div className="absolute bottom-20 right-40 w-60 h-60 border-6 border-fin-green/40 rounded-full opacity-90 -rotate-12"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative">
@@ -52,75 +52,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto glass rounded-2xl shadow-xl animate-fade-in [animation-delay:600ms] hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/50">
-          <div className="p-6 border-b border-white/50 backdrop-blur-md">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-gradient-to-br from-fin-blue/30 to-fin-purple/30 grid place-items-center">
-                <Search className="h-5 w-5 text-primary" />
-              </div>
-              <h2 className="text-xl font-semibold gradient-text">Find Your Ideal Solar Properties</h2>
-            </div>
-          </div>
-          
-          <div className="p-6 backdrop-blur-md">
-            <div className="relative mb-6 group">
-              <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 group-hover:text-primary transition-colors" />
-              <input 
-                type="text" 
-                placeholder="Search by address, city, state or zip code..." 
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/60 bg-white/70 backdrop-blur focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-inner"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <PropertyTypeCard 
-                icon={Building2} 
-                title="Commercial" 
-                count={85} 
-                color="fin-green"
-              />
-              <PropertyTypeCard 
-                icon={Gauge} 
-                title="Industrial" 
-                count={42} 
-                color="fin-blue"
-              />
-              <PropertyTypeCard 
-                icon={BarChart3} 
-                title="Mixed-Use" 
-                count={29} 
-                color="fin-purple"
-              />
-              <PropertyTypeCard 
-                icon={Search} 
-                title="Residential" 
-                count={156} 
-                color="fin-yellow"
-              />
-            </div>
-          </div>
-        </div>
+        {/* Property cards section removed */}
       </div>
     </div>
   );
 };
-
-const PropertyTypeCard = ({ 
-  icon: Icon, 
-  title, 
-  count, 
-  color 
-}: { 
-  icon: React.ElementType; 
-  title: string; 
-  count: number; 
-  color: string;
-}) => (
-  <div className="p-4 rounded-xl bg-gradient-to-br from-white/90 to-white/60 backdrop-blur border border-white/60 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
-    <Icon className={`h-6 w-6 text-${color} mb-2 group-hover:scale-110 transition-transform`} />
-    <h3 className="font-medium gradient-text">{title}</h3>
-    <p className="text-sm text-muted-foreground">{count} Properties</p>
-  </div>
-);
 
 export default Hero;
