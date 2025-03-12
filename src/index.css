@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -7,25 +6,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212.7 26.8% 83.9%;
     --radius: 1rem;
   }
 
@@ -41,17 +40,17 @@
 
 @layer components {
   .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/30 shadow-sm hover:bg-white/80 transition-all duration-300;
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300;
   }
   
   .premium-card {
-    @apply rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 border border-border hover:shadow-xl hover:-translate-y-1;
+    @apply rounded-2xl bg-secondary/50 p-6 shadow-lg transition-all duration-300 border border-white/10 hover:shadow-xl hover:-translate-y-1;
   }
 
   .grid-pattern {
     background-image: 
-      linear-gradient(to right, rgba(100, 116, 139, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(100, 116, 139, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -82,19 +81,19 @@
   }
   
   .shimmer {
-    @apply bg-[length:200%_100%] bg-[linear-gradient(110deg,#efefef,45%,#f7f7f7,55%,#efefef)] animate-background-shine;
+    @apply bg-[length:200%_100%] bg-[linear-gradient(110deg,#1a2332,45%,#2a3445,55%,#1a2332)] animate-background-shine;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent;
   }
   
   .soft-shadow {
-    @apply shadow-[0_8px_30px_rgb(0,0,0,0.05)];
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.2)];
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
   }
 }
 
