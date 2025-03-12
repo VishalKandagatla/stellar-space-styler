@@ -21,7 +21,7 @@ const Hero = () => {
           <div className="inline-block p-2 px-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm mb-6 animate-fade-in">
             <span className="text-sm font-medium text-fin-blue flex items-center">
               <Sparkles className="h-4 w-4 mr-2 text-fin-yellow" />
-              Revolutionizing Solar Investment Through AI
+              Revolutionizing Solar Investment Through Advanced AI
             </span>
           </div>
           
