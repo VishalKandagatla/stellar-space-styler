@@ -34,15 +34,6 @@ const Hero = () => {
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
             <span className="bg-gradient-to-r from-fin-blue via-fin-purple to-primary bg-clip-text text-transparent animate-fade-in drop-shadow-sm relative inline-block">
               Solar Investment
-              <svg className="absolute -bottom-4 left-0 w-full" viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 0 15 Q 100 0 200 15 Q 300 30 400 15" stroke="url(#grad1)" strokeWidth="4" fill="none" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#8B5CF6" />
-                    <stop offset="100%" stopColor="#0EA5E9" />
-                  </linearGradient>
-                </defs>
-              </svg>
             </span>
           </h2>
           
