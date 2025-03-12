@@ -10,9 +10,9 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="max-w-5xl mx-auto text-center mb-12">
-          <div className="flex items-center justify-center mb-6">
+          <div className="flex items-center justify-center mb-6 animate-slide-down">
             <Sparkles className="h-10 w-10 text-fin-yellow animate-pulse mr-3" />
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent drop-shadow-sm">
               Unlock The Future Of Solar Investment
             </h1>
             <Sparkles className="h-10 w-10 text-fin-yellow animate-pulse ml-3" />
@@ -32,7 +32,7 @@ const Hero = () => {
         </div>
 
         <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/20 animate-fade-in [animation-delay:600ms] hover:shadow-2xl transition-all duration-300">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 animate-slide-down">
             <Search className="h-5 w-5 text-primary" />
             <h2 className="text-xl font-semibold gradient-text">Find Your Ideal Solar Properties</h2>
           </div>

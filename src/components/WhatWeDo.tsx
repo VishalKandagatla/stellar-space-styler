@@ -1,3 +1,4 @@
+
 import { Building2, Sparkles, Target, TrendingUp } from "lucide-react";
 
 const FeatureCard = ({ icon: Icon, title, description }: { 
@@ -9,7 +10,7 @@ const FeatureCard = ({ icon: Icon, title, description }: {
     <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
       <Icon className="h-6 w-6 text-primary" />
     </div>
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <h3 className="text-lg font-semibold mb-2 gradient-text">{title}</h3>
     <p className="text-muted-foreground">{description}</p>
   </div>
 );
@@ -38,9 +39,9 @@ const WhatWeDo = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="lg:w-1/2">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4 animate-slide-down">
               <Building2 className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold tracking-tight">What We Do</h2>
+              <h2 className="text-3xl font-bold tracking-tight gradient-text">What We Do</h2>
             </div>
             
             <p className="text-lg text-muted-foreground mb-8">
@@ -48,7 +49,7 @@ const WhatWeDo = () => {
             </p>
             
             <div className="grid gap-6">
-              {features.map((feature) => (
+              {features.map((feature, index) => (
                 <FeatureCard 
                   key={feature.title}
                   icon={feature.icon}

@@ -12,7 +12,7 @@ const Feature = ({ icon: Icon, title, description }: {
       <Icon className="h-5 w-5 text-primary" />
     </div>
     <div>
-      <h4 className="font-medium mb-1">{title}</h4>
+      <h4 className="font-medium mb-1 gradient-text">{title}</h4>
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>
   </div>
@@ -56,16 +56,16 @@ const Product = () => {
           
           <div className="lg:w-1/2 order-1 lg:order-2">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold tracking-tight mb-4 flex items-center gap-2">
+              <h2 className="text-3xl font-bold tracking-tight mb-4 flex items-center gap-2 animate-slide-down">
                 <Map className="h-8 w-8 text-primary" />
-                CityL3ns Platform
+                <span className="gradient-text">CityL3ns Platform</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Our interactive GIS platform provides vital information for decision-making, showing you the property's current state while delivering real-time predictive modeling for environmental impact and Climate Change effects.
               </p>
               
               <div className="space-y-4 mb-8">
-                {features.map((feature) => (
+                {features.map((feature, index) => (
                   <Feature 
                     key={feature.title}
                     icon={feature.icon}
