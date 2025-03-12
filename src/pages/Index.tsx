@@ -22,7 +22,7 @@ const Index = () => {
       <div className="fixed bottom-40 right-40 w-64 h-64 bg-fin-yellow/10 rounded-full blur-3xl opacity-70 animate-float [animation-delay:6s]"></div>
       
       <Navbar />
-      <main className="relative">
+      <main className="relative z-10">
         <Hero />
         <WhatWeDo />
         <Product />

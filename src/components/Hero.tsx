@@ -25,10 +25,14 @@ const Hero = () => {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm mb-8">
-            Unlock The Future Of
-            <br />
-            <span className="relative inline-block">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+            <span className="bg-gradient-to-r from-primary via-fin-blue to-fin-purple bg-clip-text text-transparent animate-fade-in drop-shadow-sm">
+              Unlock The Future Of
+            </span>
+          </h1>
+          
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+            <span className="bg-gradient-to-r from-fin-blue via-fin-purple to-primary bg-clip-text text-transparent animate-fade-in drop-shadow-sm relative inline-block">
               Solar Investment
               <svg className="absolute -bottom-4 left-0 w-full" viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 0 15 Q 100 0 200 15 Q 300 30 400 15" stroke="url(#grad1)" strokeWidth="4" fill="none" strokeLinecap="round" />
@@ -40,7 +44,7 @@ const Hero = () => {
                 </defs>
               </svg>
             </span>
-          </h1>
+          </h2>
           
           <p className="text-xl text-muted-foreground mb-10 animate-fade-in [animation-delay:200ms] max-w-3xl mx-auto">
             Discover, analyze, and maximize solar potential in real estate with AI-powered insights and comprehensive financial analytics.
