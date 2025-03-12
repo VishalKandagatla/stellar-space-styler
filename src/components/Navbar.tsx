@@ -38,9 +38,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-fin-blue">
-              Finsat<span className="font-light">.space</span>
-            </span>
+            <img 
+              src="/lovable-uploads/bd5e0726-07ab-4231-b98c-4300d4076cfb.png" 
+              alt="FinSat Logo" 
+              className="h-8" 
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
