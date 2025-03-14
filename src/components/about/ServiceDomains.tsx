@@ -1,6 +1,7 @@
 
 import { SectionContainer } from "@/components/ui/section-container";
 import { Card, CardContent } from "@/components/ui/card";
+import ValueCard from "@/components/ui/value-card";
 import { Flame, AirVent, Droplet, Earth } from "lucide-react";
 
 const ServiceDomains = () => {
@@ -9,25 +10,25 @@ const ServiceDomains = () => {
       icon: Flame,
       title: "Solar (Fire)",
       description: "Advanced property analysis, financial modeling (NPV, IRR, payback period), and AI-driven solar asset management.",
-      color: "bg-fin-orange/10 text-fin-orange"
+      color: "orange" as const
     },
     {
       icon: AirVent,
       title: "Air Quality Management",
       description: "Upcoming analytics to monitor, predict, and mitigate air quality issues through intelligent data solutions.",
-      color: "bg-fin-purple/10 text-fin-purple"
+      color: "purple" as const
     },
     {
       icon: Droplet,
       title: "Water Resource Optimization",
       description: "Future capabilities include technology-driven water usage analysis and conservation strategies for sustainable management.",
-      color: "bg-fin-cyan/10 text-fin-cyan"
+      color: "cyan" as const
     },
     {
       icon: Earth,
       title: "Earth Sustainability",
       description: "Innovative approaches to land management, soil health monitoring, and sustainable agricultural practices powered by AI and machine learning.",
-      color: "bg-fin-green/10 text-fin-green"
+      color: "green" as const
     }
   ];
 
@@ -45,13 +46,14 @@ const ServiceDomains = () => {
           {domains.map((domain, index) => (
             <Card key={index} className="bg-white/50 backdrop-blur border-none shadow-md hover:shadow-lg transition-all duration-300 group">
               <CardContent className="pt-6">
-                <div className={`h-12 w-12 rounded-full ${domain.color} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}>
-                  <domain.icon className="h-6 w-6" />
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-3">{domain.title}</h3>
-                
-                <p className="text-muted-foreground">{domain.description}</p>
+                <ValueCard
+                  color={domain.color}
+                  icon={<domain.icon className="h-5 w-5 text-white" />}
+                  title={domain.title}
+                  description={domain.description}
+                  className="bg-transparent hover:bg-transparent p-0"
+                  compact
+                />
               </CardContent>
             </Card>
           ))}

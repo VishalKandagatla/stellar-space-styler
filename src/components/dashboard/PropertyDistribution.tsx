@@ -1,7 +1,35 @@
 
-import { BarChart3 } from "lucide-react";
+import { BarChart3, Building2, Home, Factory, Buildings } from "lucide-react";
+import ValueCard from "@/components/ui/value-card";
 
 const PropertyDistribution = () => {
+  const propertyTypes = [
+    {
+      type: "Commercial",
+      count: "38 properties",
+      icon: Building2,
+      color: "blue" as const
+    },
+    {
+      type: "Residential",
+      count: "52 properties",
+      icon: Home,
+      color: "green" as const
+    },
+    {
+      type: "Industrial",
+      count: "21 properties",
+      icon: Factory,
+      color: "red" as const
+    },
+    {
+      type: "Mixed-Use",
+      count: "14 properties",
+      icon: Buildings,
+      color: "purple" as const
+    }
+  ];
+
   return (
     <div className="bg-white rounded-xl border border-border shadow-md overflow-hidden">
       <div className="p-4 border-b border-border bg-secondary/20">
@@ -22,22 +50,18 @@ const PropertyDistribution = () => {
           </div>
         </div>
         <div className="space-y-3 pt-2">
-          <div className="flex justify-between items-center text-sm">
-            <span>Commercial</span>
-            <span className="font-medium">38 properties</span>
-          </div>
-          <div className="flex justify-between items-center text-sm">
-            <span>Residential</span>
-            <span className="font-medium">52 properties</span>
-          </div>
-          <div className="flex justify-between items-center text-sm">
-            <span>Industrial</span>
-            <span className="font-medium">21 properties</span>
-          </div>
-          <div className="flex justify-between items-center text-sm">
-            <span>Mixed-Use</span>
-            <span className="font-medium">14 properties</span>
-          </div>
+          {propertyTypes.map((property, index) => (
+            <ValueCard
+              key={index}
+              color={property.color}
+              icon={<property.icon className="h-3 w-3 text-white" />}
+              title={property.type}
+              description={property.count}
+              compact
+              bordered
+              className="py-2"
+            />
+          ))}
         </div>
       </div>
     </div>
