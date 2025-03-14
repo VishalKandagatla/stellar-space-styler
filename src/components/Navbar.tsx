@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Menu, X, Search, Map, BarChart3, Compass, Settings, Info } from "lucide-react";
+import { Menu, X, Search, Map, BarChart3, Compass, Settings, Info, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -24,6 +25,7 @@ const Navbar = () => {
     { title: "WATCHLIST", href: "#watchlist", icon: Compass },
     { title: "DASHBOARD", href: "#dashboard", icon: BarChart3 },
     { title: "ABOUT", href: "/about", icon: Info },
+    { title: "CONTACT", href: "/contact", icon: Mail },
   ];
 
   return (
