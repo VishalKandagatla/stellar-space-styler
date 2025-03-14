@@ -1,5 +1,6 @@
 
-import { Globe, Check } from "lucide-react";
+import { Globe } from "lucide-react";
+import ValueCard from "@/components/ui/value-card";
 
 const CommitmentContent = () => {
   return (
@@ -22,75 +23,23 @@ const CommitmentContent = () => {
       </p>
       
       <div className="space-y-4 mt-6">
-        <CommitmentFeature 
+        <ValueCard 
           color="blue" 
           title="Identify and Analyze" 
           description="Environmental challenges with precise geospatial intelligence." 
         />
         
-        <CommitmentFeature 
+        <ValueCard 
           color="purple" 
           title="Optimize and Deploy" 
           description="Resources efficiently, maximizing environmental and economic returns." 
         />
         
-        <CommitmentFeature 
+        <ValueCard 
           color="green" 
           title="Monitor and Manage" 
           description="Assets proactively, ensuring compliance with evolving regulatory standards." 
         />
-      </div>
-    </div>
-  );
-};
-
-interface CommitmentFeatureProps {
-  color: 'blue' | 'purple' | 'green' | 'yellow';
-  title: string;
-  description: string;
-}
-
-const CommitmentFeature = ({ color, title, description }: CommitmentFeatureProps) => {
-  const getColorClasses = () => {
-    switch (color) {
-      case 'blue':
-        return {
-          bg: 'bg-fin-blue/5 hover:bg-fin-blue/10',
-          icon: 'bg-fin-blue'
-        };
-      case 'purple':
-        return {
-          bg: 'bg-fin-purple/5 hover:bg-fin-purple/10',
-          icon: 'bg-fin-purple'
-        };
-      case 'green':
-        return {
-          bg: 'bg-fin-green/5 hover:bg-fin-green/10',
-          icon: 'bg-fin-green'
-        };
-      case 'yellow':
-        return {
-          bg: 'bg-fin-yellow/5 hover:bg-fin-yellow/10',
-          icon: 'bg-fin-yellow'
-        };
-      default:
-        return {
-          bg: 'bg-fin-blue/5 hover:bg-fin-blue/10',
-          icon: 'bg-fin-blue'
-        };
-    }
-  };
-
-  const colors = getColorClasses();
-
-  return (
-    <div className={`flex gap-4 p-4 rounded-lg ${colors.bg} transition-colors`}>
-      <div className={`h-8 w-8 rounded-full ${colors.icon} flex items-center justify-center flex-shrink-0`}>
-        <Check className="h-4 w-4 text-white" />
-      </div>
-      <div>
-        <h4 className="font-semibold text-gray-800">{title}</h4>
-        <p className="text-muted-foreground">{description}</p>
       </div>
     </div>
   );
