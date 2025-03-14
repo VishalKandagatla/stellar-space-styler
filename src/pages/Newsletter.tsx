@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { NewsletterHero } from '@/components/newsletter/NewsletterHero';
 import { MarketInsights } from '@/components/newsletter/MarketInsights';
 import { NewsletterSignup } from '@/components/newsletter/NewsletterSignup';
+import MarketTrends from '@/components/market/MarketTrends';
 
 const Newsletter = () => {
   return (
@@ -13,6 +14,7 @@ const Newsletter = () => {
       <main className="flex-grow">
         <NewsletterHero />
         <MarketInsights />
+        <MarketTrends />
         <NewsletterSignup />
       </main>
       <Footer />
