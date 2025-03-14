@@ -58,14 +58,14 @@ const positionTypes = [
 
 interface ApplicationFormProps {
   onCancel: () => void;
+  onSuccess?: () => void;
 }
 
-const ApplicationForm = ({ onCancel }: ApplicationFormProps) => {
+const ApplicationForm = ({ onCancel, onSuccess }: ApplicationFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [cvFile, setCvFile] = useState<File | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -83,23 +83,39 @@ const ApplicationForm = ({ onCancel }: ApplicationFormProps) => {
   });
 
   const onSubmit = async (values: FormValues) => {
+    if (!resumeFile) {
+      toast({
+        title: "Resume required",
+        description: "Please upload your resume to proceed with your application.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
+      // Simulate API call - In a real application, you would send the form data and files to your backend
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      console.log("Form submission:", values);
-      console.log("Resume file:", resumeFile);
-      console.log("CV file:", cvFile);
-      
-      setIsSuccess(true);
+      // Log form data (for demonstration purposes)
+      console.log("Form submission:", {
+        ...values,
+        resumeFile: resumeFile ? resumeFile.name : null,
+        cvFile: cvFile ? cvFile.name : null
+      });
       
       toast({
         title: "Application submitted!",
         description: "Thank you for your interest. We'll review your application and get back to you soon.",
       });
+      
+      // Call the success callback if provided
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
+      console.error("Error submitting application:", error);
       toast({
         title: "Something went wrong.",
         description: "Please try again later.",
@@ -128,23 +144,6 @@ const ApplicationForm = ({ onCancel }: ApplicationFormProps) => {
       setCvFile(null);
     }
   };
-
-  if (isSuccess) {
-    return (
-      <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-12 mb-12 text-center">
-        <div className="flex justify-center mb-6">
-          <div className="bg-green-100 p-3 rounded-full">
-            <CheckCircle className="h-12 w-12 text-green-600" />
-          </div>
-        </div>
-        <h2 className="text-2xl font-bold mb-4">Application Submitted!</h2>
-        <p className="text-lg mb-8">
-          Thank you for your interest in joining our team. We'll review your application and get back to you soon.
-        </p>
-        <Button onClick={onCancel}>Return to Careers</Button>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-8 md:p-12 mb-12">
@@ -316,7 +315,7 @@ const ApplicationForm = ({ onCancel }: ApplicationFormProps) => {
             <div>
               <FormLabel className="flex items-center gap-2 mb-2">
                 <Upload className="h-4 w-4" />
-                Resume
+                Resume <span className="text-red-500">*</span>
               </FormLabel>
               <div className="flex items-center space-x-2">
                 <Input
@@ -339,6 +338,11 @@ const ApplicationForm = ({ onCancel }: ApplicationFormProps) => {
               {resumeFile && (
                 <p className="text-sm text-muted-foreground mt-2">
                   Selected file: {resumeFile.name}
+                </p>
+              )}
+              {!resumeFile && (
+                <p className="text-sm text-muted-foreground mt-2">
+                  Please upload your resume (PDF, DOC or DOCX)
                 </p>
               )}
             </div>
