@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Menu, X, Search, Map, BarChart3, Compass, Settings, Info, Mail } from "lucide-react";
+import { Menu, X, Search, Map, BarChart3, Users, Settings, Info, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
   const navLinks = [
     { title: "SEARCH", href: "#search", icon: Search },
     { title: "PROPERTY DETAILS", href: "#property-details", icon: Map },
-    { title: "WATCHLIST", href: "#watchlist", icon: Compass },
+    { title: "JOIN OUR TEAM", href: "/join-team", icon: Users },
     { title: "DASHBOARD", href: "#dashboard", icon: BarChart3 },
     { title: "ABOUT", href: "/about", icon: Info },
     { title: "CONTACT", href: "/contact", icon: Mail },
