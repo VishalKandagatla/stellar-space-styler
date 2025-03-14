@@ -6,6 +6,7 @@ import Introduction from "@/components/about/Introduction";
 import ServiceDomains from "@/components/about/ServiceDomains";
 import Commitment from "@/components/about/Commitment";
 import TeamMembers from "@/components/about/TeamMembers";
+import Timeline from "@/components/about/Timeline";
 import AboutCTA from "@/components/about/AboutCTA";
 
 const About = () => {
@@ -25,6 +26,7 @@ const About = () => {
         <AboutHero />
         <Introduction />
         <ServiceDomains />
+        <Timeline />
         <Commitment />
         <TeamMembers />
         <AboutCTA />
