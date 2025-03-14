@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail } from 'lucide-react';
-import { Form, FormField, FormItem, FormLabel, FormControl } from '@/components/ui/form';
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { UseFormReturn } from 'react-hook-form';
 import { SubscriptionFormValues, FrequencyOption } from './types';
 import { FrequencySelector } from './FrequencySelector';
@@ -31,10 +31,11 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First Name</FormLabel>
+                <FormLabel>First Name*</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter your first name" {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -44,10 +45,11 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last Name</FormLabel>
+                <FormLabel>Last Name*</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter your last name" {...field} />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -67,6 +69,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                   {...field} 
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

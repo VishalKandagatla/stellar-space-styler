@@ -4,7 +4,8 @@ import { SectionContainer } from '@/components/ui/section-container';
 import { useToast } from '@/hooks/use-toast';
 import { Mail } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import { SubscriptionFormValues, FrequencyOption } from './types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SubscriptionFormValues, FrequencyOption, subscriptionSchema } from './types';
 import { SubscriptionForm } from './SubscriptionForm';
 
 export const NewsletterSignup = () => {
@@ -12,6 +13,7 @@ export const NewsletterSignup = () => {
   const [frequency, setFrequency] = useState<FrequencyOption>('weekly');
   
   const form = useForm<SubscriptionFormValues>({
+    resolver: zodResolver(subscriptionSchema),
     defaultValues: {
       email: '',
       firstName: '',
