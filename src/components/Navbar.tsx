@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Menu, X, Search, Map, BarChart3, Compass, Settings } from "lucide-react";
+import { Menu, X, Search, Map, BarChart3, Compass, Settings, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -24,6 +23,7 @@ const Navbar = () => {
     { title: "PROPERTY DETAILS", href: "#property-details", icon: Map },
     { title: "WATCHLIST", href: "#watchlist", icon: Compass },
     { title: "DASHBOARD", href: "#dashboard", icon: BarChart3 },
+    { title: "ABOUT", href: "/about", icon: Info },
   ];
 
   return (
@@ -48,14 +48,14 @@ const Navbar = () => {
 
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a 
+              <Link 
                 key={link.title}
-                href={link.href} 
+                to={link.href.startsWith('/') ? link.href : link.href} 
                 className="text-sm font-medium tracking-wider link-underline flex items-center gap-2 py-1 px-1"
               >
                 <link.icon className="h-4 w-4" />
                 {link.title}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -81,14 +81,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Enhanced mobile menu with animations */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white/90 backdrop-blur-lg shadow-lg border-t border-white/30 animate-slide-down">
           <div className="py-4 px-6 space-y-4">
             {navLinks.map((link, index) => (
-              <a
+              <Link
                 key={link.title}
-                href={link.href}
+                to={link.href.startsWith('/') ? link.href : link.href}
                 className="flex items-center gap-3 py-3 text-foreground tracking-wider animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -97,7 +96,7 @@ const Navbar = () => {
                   <link.icon className="h-4 w-4 text-primary" />
                 </div>
                 {link.title}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 border-t border-white/30 grid grid-cols-2 gap-3 animate-fade-in" style={{ animationDelay: `400ms` }}>
               <Button variant="outline" className="w-full" size="sm">
