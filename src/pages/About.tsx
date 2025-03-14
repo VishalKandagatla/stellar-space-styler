@@ -7,7 +7,6 @@ import ServiceDomains from "@/components/about/ServiceDomains";
 import Commitment from "@/components/about/Commitment";
 import TeamMembers from "@/components/about/TeamMembers";
 import Timeline from "@/components/about/Timeline";
-import AboutCTA from "@/components/about/AboutCTA";
 
 const About = () => {
   return (
@@ -29,7 +28,6 @@ const About = () => {
         <Timeline />
         <Commitment />
         <TeamMembers />
-        <AboutCTA />
       </main>
       <Footer />
     </div>
