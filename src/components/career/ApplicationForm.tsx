@@ -4,57 +4,18 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
-import { 
-  CheckCircle, 
-  Upload, 
-  User, 
-  Mail, 
-  Phone, 
-  Briefcase, 
-  FileText, 
-  MapPin, 
-  Link as LinkIcon, 
-  X
-} from "lucide-react";
-
-const formSchema = z.object({
-  firstName: z.string().min(2, "First name must be at least 2 characters"),
-  lastName: z.string().min(2, "Last name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(6, "Please enter a valid phone number"),
-  location: z.string().min(2, "Please enter your location"),
-  positionType: z.string().optional(),
-  linkedIn: z.string().optional(),
-  portfolio: z.string().optional(),
-  coverLetter: z.string().min(10, "Cover letter must be at least 10 characters"),
-});
+import { X } from "lucide-react";
+import { formSchema, positionTypes } from "./form-schema";
+import { PersonalInfoFields } from "./form-fields/PersonalInfoFields";
+import { ContactInfoFields } from "./form-fields/ContactInfoFields";
+import { ProfessionalInfoFields } from "./form-fields/ProfessionalInfoFields";
+import { ResumeUpload } from "./form-fields/ResumeUpload";
+import { CVUpload } from "./form-fields/CVUpload";
+import { CoverLetterField } from "./form-fields/CoverLetterField";
 
 type FormValues = z.infer<typeof formSchema>;
-
-const positionTypes = [
-  { value: "fullTime", label: "Full-Time" },
-  { value: "partTime", label: "Part-Time" },
-  { value: "contract", label: "Contract" },
-  { value: "internship", label: "Internship" },
-];
 
 interface ApplicationFormProps {
   onCancel: () => void;
@@ -156,247 +117,26 @@ const ApplicationForm = ({ onCancel, onSuccess }: ApplicationFormProps) => {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    First Name
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="John" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    Last Name
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="Doe" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <PersonalInfoFields control={form.control} />
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    Email Address
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="your.email@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Phone Number
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="+1 (123) 456-7890" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <ContactInfoFields control={form.control} />
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="location"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    Location
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="City, Country" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="positionType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Briefcase className="h-4 w-4" />
-                    Position Type
-                  </FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select position type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {positionTypes.map((type) => (
-                        <SelectItem key={type.value} value={type.value}>
-                          {type.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="linkedIn"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <LinkIcon className="h-4 w-4" />
-                    LinkedIn Profile (Optional)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://linkedin.com/in/yourprofile" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="portfolio"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <LinkIcon className="h-4 w-4" />
-                    Portfolio/Website (Optional)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://yourportfolio.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <ProfessionalInfoFields control={form.control} />
           
           <div className="space-y-6">
-            <div>
-              <FormLabel className="flex items-center gap-2 mb-2">
-                <Upload className="h-4 w-4" />
-                Resume <span className="text-red-500">*</span>
-              </FormLabel>
-              <div className="flex items-center space-x-2">
-                <Input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(e) => handleFileChange(e, 'resume')}
-                  className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-white hover:file:bg-primary/90"
-                />
-                {resumeFile && (
-                  <Button 
-                    type="button" 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => clearFile('resume')}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                )}
-              </div>
-              {resumeFile && (
-                <p className="text-sm text-muted-foreground mt-2">
-                  Selected file: {resumeFile.name}
-                </p>
-              )}
-              {!resumeFile && (
-                <p className="text-sm text-muted-foreground mt-2">
-                  Please upload your resume (PDF, DOC or DOCX)
-                </p>
-              )}
-            </div>
-            
-            <div>
-              <FormLabel className="flex items-center gap-2 mb-2">
-                <FileText className="h-4 w-4" />
-                CV (Optional)
-              </FormLabel>
-              <div className="flex items-center space-x-2">
-                <Input
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(e) => handleFileChange(e, 'cv')}
-                  className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-white hover:file:bg-primary/90"
-                />
-                {cvFile && (
-                  <Button 
-                    type="button" 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => clearFile('cv')}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                )}
-              </div>
-              {cvFile && (
-                <p className="text-sm text-muted-foreground mt-2">
-                  Selected file: {cvFile.name}
-                </p>
-              )}
-            </div>
-            
-            <FormField
-              control={form.control}
-              name="coverLetter"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <FileText className="h-4 w-4" />
-                    Cover Letter
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea 
-                      placeholder="Tell us why you're interested in joining our team and what makes you a good fit for the role..."
-                      className="min-h-[150px]" 
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            <ResumeUpload 
+              resumeFile={resumeFile} 
+              handleFileChange={(e) => handleFileChange(e, 'resume')} 
+              clearFile={() => clearFile('resume')} 
             />
+            
+            <CVUpload 
+              cvFile={cvFile} 
+              handleFileChange={(e) => handleFileChange(e, 'cv')} 
+              clearFile={() => clearFile('cv')} 
+            />
+            
+            <CoverLetterField control={form.control} />
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
