@@ -47,17 +47,17 @@ const Commitment = () => {
         });
       });
 
-      // Add team locations
+      // Add team locations - Fixed by using explicit [number, number] tuples
       const teamLocations = [
-        { name: "Michelle Del Valle", coordinates: [-74.006, 40.7128] }, // New York
-        { name: "Marcello Miradoli", coordinates: [12.5674, 41.8719] },  // Rome
-        { name: "Carolina Cappabianca", coordinates: [-58.3816, -34.6037] }, // Buenos Aires
-        { name: "Florim Shabani", coordinates: [21.1655, 42.6629] },     // Pristina
-        { name: "Ethan Moody", coordinates: [-119.4179, 36.7783] },      // California
-        { name: "Janicka Bassis", coordinates: [4.9041, 52.3676] },      // Amsterdam
-        { name: "Besim Ajvazi", coordinates: [18.4131, 43.8563] },       // Sarajevo
-        { name: "Grant Anderson", coordinates: [-97.7431, 30.2672] },    // Austin
-        { name: "Tarun Luthra", coordinates: [77.1025, 28.7041] }        // Delhi
+        { name: "Michelle Del Valle", coordinates: [-74.006, 40.7128] as [number, number] }, // New York
+        { name: "Marcello Miradoli", coordinates: [12.5674, 41.8719] as [number, number] },  // Rome
+        { name: "Carolina Cappabianca", coordinates: [-58.3816, -34.6037] as [number, number] }, // Buenos Aires
+        { name: "Florim Shabani", coordinates: [21.1655, 42.6629] as [number, number] },     // Pristina
+        { name: "Ethan Moody", coordinates: [-119.4179, 36.7783] as [number, number] },      // California
+        { name: "Janicka Bassis", coordinates: [4.9041, 52.3676] as [number, number] },      // Amsterdam
+        { name: "Besim Ajvazi", coordinates: [18.4131, 43.8563] as [number, number] },       // Sarajevo
+        { name: "Grant Anderson", coordinates: [-97.7431, 30.2672] as [number, number] },    // Austin
+        { name: "Tarun Luthra", coordinates: [77.1025, 28.7041] as [number, number] }        // Delhi
       ];
 
       map.current.on('load', () => {
@@ -66,7 +66,7 @@ const Commitment = () => {
             new mapboxgl.Marker({
               color: "#1e40af"
             })
-              .setLngLat(location.coordinates as [number, number])
+              .setLngLat(location.coordinates)
               .setPopup(new mapboxgl.Popup().setText(location.name))
               .addTo(map.current);
           }
