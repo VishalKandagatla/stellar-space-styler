@@ -1,5 +1,4 @@
-
-import { BarChart3, Building2, Home, Factory, Buildings } from "lucide-react";
+import { BarChart3, Building2, Home, Factory, Building } from "lucide-react";
 import ValueCard from "@/components/ui/value-card";
 
 const PropertyDistribution = () => {
@@ -25,7 +24,7 @@ const PropertyDistribution = () => {
     {
       type: "Mixed-Use",
       count: "14 properties",
-      icon: Buildings,
+      icon: Building,
       color: "purple" as const
     }
   ];
