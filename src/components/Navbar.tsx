@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -19,10 +20,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { title: "NEWSLETTER", href: "/newsletter", icon: Newspaper },
-    { title: "JOIN OUR TEAM", href: "/join-team", icon: Users },
     { title: "ABOUT", href: "/about", icon: Info },
+    { title: "NEWSLETTER", href: "/newsletter", icon: Newspaper },
     { title: "CONTACT", href: "/contact", icon: Mail },
+    { title: "JOIN OUR TEAM", href: "/join-team", icon: Users },
   ];
 
   return (
