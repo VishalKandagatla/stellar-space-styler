@@ -64,7 +64,7 @@ const TeamMembers = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white/80 to-gray-50/80">
       <SectionContainer>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 text-fin-blue font-semibold mb-3">
@@ -79,31 +79,34 @@ const TeamMembers = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="bg-white/70 backdrop-blur border-none shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden">
+            <Card key={index} className="overflow-hidden bg-white shadow-md hover:shadow-lg transition-all duration-300">
               <CardContent className="p-0">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                 </div>
                 
-                <div className="p-5 relative mt-[-80px]">
-                  <Avatar className="h-20 w-20 border-4 border-white shadow-lg mb-3">
-                    <AvatarImage src={member.image} alt={member.name} />
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  
-                  <h3 className="text-xl font-semibold text-white mb-1">{member.name}</h3>
-                  <p className="text-white/80 text-sm mb-3">{member.role}</p>
-                  
-                  <div className="flex items-center text-white/70 text-sm mt-2">
-                    <MapPin className="h-3.5 w-3.5 mr-1" />
-                    {member.location}
+                <div className="p-6">
+                  <div className="flex items-start gap-4">
+                    <Avatar className="h-16 w-16 border-4 border-white shadow-md">
+                      <AvatarImage src={member.image} alt={member.name} />
+                      <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
+                      <p className="text-fin-blue font-medium">{member.role}</p>
+                      
+                      <div className="flex items-center text-gray-600 text-sm mt-3">
+                        <MapPin className="h-3.5 w-3.5 mr-1.5" />
+                        {member.location}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
