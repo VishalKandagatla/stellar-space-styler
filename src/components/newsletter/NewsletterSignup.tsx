@@ -5,12 +5,45 @@ import { useToast } from '@/hooks/use-toast';
 import { Mail } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SubscriptionFormValues, FrequencyOption, subscriptionSchema } from './types';
+import { 
+  SubscriptionFormValues, 
+  FrequencyOption, 
+  subscriptionSchema, 
+  NewsletterType 
+} from './types';
 import { SubscriptionForm } from './SubscriptionForm';
+import { SubscriptionConfirmation } from './SubscriptionConfirmation';
+import { BarChart3, Newspaper, Bell } from 'lucide-react';
 
 export const NewsletterSignup = () => {
   const { toast } = useToast();
   const [frequency, setFrequency] = useState<FrequencyOption>('weekly');
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [submittedData, setSubmittedData] = useState<SubscriptionFormValues | null>(null);
+  
+  const newsletterTypes: NewsletterType[] = [
+    {
+      id: 'market-trends',
+      title: 'Market Trends',
+      description: 'Latest updates on market movements',
+      icon: BarChart3,
+      color: 'blue',
+    },
+    {
+      id: 'investment-insights',
+      title: 'Investment Insights',
+      description: 'Expert analysis and investment ideas',
+      icon: Newspaper,
+      color: 'purple',
+    },
+    {
+      id: 'regulatory-updates',
+      title: 'Regulatory Updates',
+      description: 'Stay informed on policy changes',
+      icon: Bell,
+      color: 'red',
+    },
+  ];
   
   const form = useForm<SubscriptionFormValues>({
     resolver: zodResolver(subscriptionSchema),
@@ -30,6 +63,13 @@ export const NewsletterSignup = () => {
       description: "Thank you for subscribing to our newsletter.",
     });
     
+    // Store the submitted data and show confirmation dialog
+    setSubmittedData(data);
+    setShowConfirmation(true);
+  };
+
+  const handleCloseConfirmation = () => {
+    setShowConfirmation(false);
     form.reset();
   };
 
@@ -57,6 +97,16 @@ export const NewsletterSignup = () => {
               />
             </div>
           </div>
+          
+          {submittedData && (
+            <SubscriptionConfirmation
+              open={showConfirmation}
+              onClose={handleCloseConfirmation}
+              formData={submittedData}
+              frequency={frequency}
+              newsletterTypes={newsletterTypes}
+            />
+          )}
         </div>
       </SectionContainer>
     </section>

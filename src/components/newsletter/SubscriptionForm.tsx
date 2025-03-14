@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Mail } from 'lucide-react';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { UseFormReturn } from 'react-hook-form';
-import { SubscriptionFormValues, FrequencyOption } from './types';
+import { SubscriptionFormValues, FrequencyOption, NewsletterType } from './types';
 import { FrequencySelector } from './FrequencySelector';
 import { NewsletterInterests } from './NewsletterInterests';
 
@@ -14,13 +14,15 @@ interface SubscriptionFormProps {
   onSubmit: (data: SubscriptionFormValues) => void;
   frequency: FrequencyOption;
   setFrequency: (frequency: FrequencyOption) => void;
+  newsletterTypes?: NewsletterType[];
 }
 
 export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
   form,
   onSubmit,
   frequency,
-  setFrequency
+  setFrequency,
+  newsletterTypes
 }) => {
   return (
     <Form {...form}>
@@ -79,7 +81,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
           setFrequency={setFrequency}
         />
 
-        <NewsletterInterests form={form} />
+        <NewsletterInterests form={form} newsletterTypes={newsletterTypes} />
 
         <div className="pt-4">
           <Button type="submit" className="w-full" size="lg">
