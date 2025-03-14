@@ -1,11 +1,15 @@
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SectionContainer } from "@/components/ui/section-container";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Upload } from "lucide-react";
+import ApplicationForm from "@/components/career/ApplicationForm";
 
 const JoinTeam = () => {
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] to-[#e2e8f0] overflow-hidden">
       {/* Dynamic background elements */}
@@ -59,47 +63,70 @@ const JoinTeam = () => {
               
               <div className="space-y-6">
                 <div className="border border-gray-200 p-6 rounded-xl hover:border-fin-blue/30 transition-colors">
-                  <div className="flex justify-between items-start">
+                  <div className="flex justify-between items-start flex-wrap gap-4">
                     <div>
                       <h3 className="text-xl font-semibold">Environmental Data Scientist</h3>
                       <p className="text-fin-blue">Remote • Full-time</p>
                     </div>
-                    <Button className="bg-gradient-to-r from-primary to-fin-blue text-white">Apply Now</Button>
+                    <Button 
+                      onClick={() => setShowApplicationForm(true)} 
+                      className="bg-gradient-to-r from-primary to-fin-blue text-white"
+                    >
+                      Apply Now
+                    </Button>
                   </div>
                   <p className="mt-4 text-muted-foreground">Analyze environmental datasets and develop models to support our sustainability platforms.</p>
                 </div>
                 
                 <div className="border border-gray-200 p-6 rounded-xl hover:border-fin-purple/30 transition-colors">
-                  <div className="flex justify-between items-start">
+                  <div className="flex justify-between items-start flex-wrap gap-4">
                     <div>
                       <h3 className="text-xl font-semibold">Full Stack Developer</h3>
                       <p className="text-fin-purple">Remote • Full-time</p>
                     </div>
-                    <Button className="bg-gradient-to-r from-primary to-fin-purple text-white">Apply Now</Button>
+                    <Button 
+                      onClick={() => setShowApplicationForm(true)} 
+                      className="bg-gradient-to-r from-primary to-fin-purple text-white"
+                    >
+                      Apply Now
+                    </Button>
                   </div>
                   <p className="mt-4 text-muted-foreground">Build and maintain our core platform features with modern web technologies.</p>
                 </div>
                 
                 <div className="border border-gray-200 p-6 rounded-xl hover:border-fin-green/30 transition-colors">
-                  <div className="flex justify-between items-start">
+                  <div className="flex justify-between items-start flex-wrap gap-4">
                     <div>
                       <h3 className="text-xl font-semibold">Sustainability Consultant</h3>
                       <p className="text-fin-green">Hybrid • Full-time</p>
                     </div>
-                    <Button className="bg-gradient-to-r from-primary to-fin-green text-white">Apply Now</Button>
+                    <Button 
+                      onClick={() => setShowApplicationForm(true)} 
+                      className="bg-gradient-to-r from-primary to-fin-green text-white"
+                    >
+                      Apply Now
+                    </Button>
                   </div>
                   <p className="mt-4 text-muted-foreground">Advise clients on implementing sustainable practices and utilizing our platform effectively.</p>
                 </div>
               </div>
             </div>
             
-            <div className="text-center mt-12">
-              <p className="text-lg mb-6">Don't see a role that fits your skills? We're always looking for talented individuals to join our mission.</p>
-              <Button size="lg" className="bg-gradient-to-r from-primary to-fin-blue text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group">
-                Submit General Application
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </div>
+            {showApplicationForm ? (
+              <ApplicationForm onCancel={() => setShowApplicationForm(false)} />
+            ) : (
+              <div className="text-center mt-12">
+                <p className="text-lg mb-6">Don't see a role that fits your skills? We're always looking for talented individuals to join our mission.</p>
+                <Button 
+                  size="lg" 
+                  onClick={() => setShowApplicationForm(true)}
+                  className="bg-gradient-to-r from-primary to-fin-blue text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group"
+                >
+                  Submit General Application
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </div>
+            )}
           </div>
         </SectionContainer>
       </main>
