@@ -160,12 +160,20 @@ const Commitment = () => {
           <div className="order-1 md:order-2">
             {MAPBOX_TOKEN === "YOUR_MAPBOX_TOKEN" ? (
               <div className="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-r from-fin-blue/10 to-fin-purple/10 p-1">
-                <div className="bg-white/80 rounded-xl p-6 h-[400px] flex flex-col items-center justify-center">
-                  <Globe className="h-16 w-16 text-fin-blue mb-4" />
-                  <h3 className="text-lg font-medium mb-2">Global Impact Map</h3>
-                  <p className="text-center text-muted-foreground">
-                    To view our interactive global impact map, please add your Mapbox token in the code.
-                  </p>
+                <div className="bg-white/80 rounded-xl p-6 h-[400px] flex flex-col items-center justify-center relative">
+                  <img 
+                    src="/lovable-uploads/08894289-2a37-4b49-9933-7654a19052bd.png" 
+                    alt="World Map" 
+                    className="w-full h-full object-contain absolute inset-0 p-4 opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-white/60 opacity-50"></div>
+                  <div className="relative z-10 text-center">
+                    <Globe className="h-16 w-16 text-fin-blue mb-4 mx-auto" />
+                    <h3 className="text-lg font-medium mb-2">Global Impact Map</h3>
+                    <p className="text-center text-muted-foreground">
+                      Our team and projects span across the globe, enabling environmental solutions worldwide.
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
