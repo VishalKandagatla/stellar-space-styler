@@ -1,9 +1,55 @@
 
+import { useState } from "react";
 import { ArrowRight, Search, Building2, MapPin, Gauge, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTrialSignup } from "@/hooks/use-trial-signup";
+import { useDemoRequest } from "@/hooks/use-demo-request";
+import { usePropertySearch } from "@/hooks/use-property-search";
+import SearchResultsModal from "@/components/SearchResultsModal";
 
 const Hero = () => {
+  // State for form inputs
+  const [email, setEmail] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [location, setLocation] = useState("");
+  const [solarPotential, setSolarPotential] = useState("");
+  const [showResultsModal, setShowResultsModal] = useState(false);
+  
+  // Custom hooks for backend functionality
+  const { isLoading: isTrialLoading, startFreeTrial } = useTrialSignup();
+  const { isLoading: isDemoLoading, scheduleDemo } = useDemoRequest();
+  const { isLoading: isSearchLoading, results, searchProperties } = usePropertySearch();
+  
+  // Handle free trial button click
+  const handleStartTrial = async () => {
+    const trialEmail = prompt("Please enter your email to start your free trial:");
+    if (trialEmail) {
+      await startFreeTrial(trialEmail);
+    }
+  };
+  
+  // Handle demo button click
+  const handleWatchDemo = async () => {
+    const demoEmail = prompt("Please enter your email to schedule a demo:");
+    if (demoEmail) {
+      await scheduleDemo(demoEmail);
+    }
+  };
+  
+  // Handle property search
+  const handleSearch = async () => {
+    const searchResults = await searchProperties({
+      propertyType,
+      location,
+      solarPotential
+    });
+    
+    if (searchResults.length > 0) {
+      setShowResultsModal(true);
+    }
+  };
+
   return (
     <div className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
       {/* Abstract background with gradient overlay - increased opacity */}
@@ -43,12 +89,23 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in [animation-delay:400ms]">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-fin-blue text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group">
-              Start Free Trial
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-primary to-fin-blue text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group"
+              onClick={handleStartTrial}
+              disabled={isTrialLoading}
+            >
+              {isTrialLoading ? "Processing..." : "Start Free Trial"}
               <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
-            <Button size="lg" variant="outline" className="shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-primary/30 backdrop-blur">
-              Watch Demo
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-primary/30 backdrop-blur"
+              onClick={handleWatchDemo}
+              disabled={isDemoLoading}
+            >
+              {isDemoLoading ? "Processing..." : "Watch Demo"}
             </Button>
           </div>
         </div>
@@ -64,6 +121,8 @@ const Hero = () => {
                 type="text" 
                 placeholder="Property type or address" 
                 className="pl-10 h-12 bg-white border-gray-200" 
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
               />
             </div>
             <div className="flex-1 relative">
@@ -74,6 +133,8 @@ const Hero = () => {
                 type="text" 
                 placeholder="Location" 
                 className="pl-10 h-12 bg-white border-gray-200" 
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
               />
             </div>
             <div className="flex-1 relative">
@@ -84,14 +145,27 @@ const Hero = () => {
                 type="text" 
                 placeholder="Solar potential" 
                 className="pl-10 h-12 bg-white border-gray-200" 
+                value={solarPotential}
+                onChange={(e) => setSolarPotential(e.target.value)}
               />
             </div>
-            <Button className="h-12 px-6 bg-gradient-to-r from-fin-blue to-fin-purple text-white shadow-md">
+            <Button 
+              className="h-12 px-6 bg-gradient-to-r from-fin-blue to-fin-purple text-white shadow-md"
+              onClick={handleSearch}
+              disabled={isSearchLoading}
+            >
               <Search className="h-5 w-5 mr-2" />
-              Search
+              {isSearchLoading ? "Searching..." : "Search"}
             </Button>
           </div>
         </div>
+
+        {/* Search Results Modal */}
+        <SearchResultsModal 
+          isOpen={showResultsModal}
+          onClose={() => setShowResultsModal(false)}
+          results={results}
+        />
       </div>
     </div>
   );
